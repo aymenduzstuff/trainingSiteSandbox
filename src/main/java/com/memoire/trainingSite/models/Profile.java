@@ -1,8 +1,10 @@
 package com.memoire.trainingSite.models;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Profile {
     @GeneratedValue(strategy = GenerationType.AUTO )

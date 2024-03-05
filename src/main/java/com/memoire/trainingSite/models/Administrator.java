@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Administrator extends User{
+public class Administrator extends SiteUser {
 
 }

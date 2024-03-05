@@ -2,18 +2,19 @@ package com.memoire.trainingSite.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Data
-@Table(name = "TrainingPosition")
 public class TrainingPosition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PositionId")
-    private Long  position_id;
+    @Column(name = "positionId")
+    private Long  position_id ;
     @Column(name = "PositionDescription")
     private String  position_description;
     @Column(name = "PositionPostingDate")
@@ -24,6 +25,7 @@ public class TrainingPosition {
     private PositionStatus  position_status;
     @Column(name = "PositionFreePlaces")
     private Integer  position_free_places;
+    //@JdbcTypeCode(SqlTypes.JSON)
     @Column(name = "PositionWorkType")
     private PositionWorkType  position_work_type;
     @Column(name = "PositionStartingDate")
@@ -32,6 +34,9 @@ public class TrainingPosition {
     private Integer position_duration;
     @Column(name = "PositionRequirements")
     private String position_requirements;
-    private List<Application> applications ;
+    @OneToMany(mappedBy = "trainingPositions")
+    private List<Region> regions = new ArrayList<>() ;
+    @OneToMany(mappedBy = "position")
+    private List<Application> applications = new ArrayList<>() ;
 
 }

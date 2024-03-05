@@ -1,12 +1,14 @@
 package com.memoire.trainingSite.models;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 @Entity
+@Data
 public class Project {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long projectId;
 
     @Column(name = "projectDescription")

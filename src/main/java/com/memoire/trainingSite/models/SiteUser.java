@@ -1,16 +1,18 @@
 package com.memoire.trainingSite.models;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class User {
+@Data
+public  class SiteUser {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
-    @Column(name = "UserId")
     private Long user_id;
-    @Column(name ="Username" )
+    @Column(name ="Username")
     private String username;
     @Column(name ="Password" )
     private String user_password;
